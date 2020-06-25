@@ -1,0 +1,24 @@
+service: banco-inter-pj-codigo-acesso
+frameworkVersion: '>=1.28.0 <2.0.0'
+
+provider:
+  name: aws
+  profile: ${file(env.json):AWS_PROFILE}
+  runtime: go1.x
+  environment:
+    GMAIL_IMAP_PASSWORD: ${file(env.json):GMAIL_IMAP_PASSWORD}
+    GMAIL_IMAP_USER: ${file(env.json):GMAIL_IMAP_USER}
+
+package:
+  exclude:
+    - ./**
+  include:
+    - ./bin/**
+
+functions:
+  get-code:
+    handler: bin/get-code
+    events:
+      - http:
+          path: /
+          method: get
