@@ -113,7 +113,9 @@ func fetchCodeFromMailbox(user, password string) string {
 					log.Fatal(err)
 				}
 				matches := reg.FindSubmatch(b)
-				code = string(matches[1])
+				if len(matches) > 0 {
+					code = string(matches[1])
+				}
 			case *mail.AttachmentHeader:
 				// This is an attachment
 				filename, _ := h.Filename()
