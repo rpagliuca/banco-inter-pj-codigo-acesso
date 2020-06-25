@@ -1,8 +1,8 @@
 package main
 
 import (
-	"regexp"
 	"io"
+	"regexp"
 
 	"log"
 

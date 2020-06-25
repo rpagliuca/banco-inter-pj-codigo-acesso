@@ -19,6 +19,7 @@ type Response events.APIGatewayProxyResponse
 type Request events.APIGatewayProxyRequest
 
 const AWS_REGION = "us-east-1"
+
 var GMAIL_IMAP_PASSWORD = os.Getenv("GMAIL_IMAP_PASSWORD")
 var GMAIL_IMAP_USER = os.Getenv("GMAIL_IMAP_USER")
 
@@ -44,7 +45,7 @@ func Handler(ctx context.Context, request Request) (Response, error) {
 		IsBase64Encoded: false,
 		Body:            buf.String(),
 		Headers: map[string]string{
-			"Content-Type":           "application/json",
+			"Content-Type": "application/json",
 		},
 	}
 
